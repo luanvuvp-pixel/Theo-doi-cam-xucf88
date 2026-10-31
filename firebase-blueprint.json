@@ -1,0 +1,122 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User account profile information in Emotion Care",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique user ID matching request.auth.uid"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the user",
+          "maxLength": 100
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of the user",
+          "maxLength": 150
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of user creation"
+        }
+      },
+      "required": ["id", "name", "email", "createdAt"]
+    },
+    "DiaryEntry": {
+      "title": "DiaryEntry",
+      "description": "A private personal emotional journal entry",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique entry identifier"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Owner user ID"
+        },
+        "title": {
+          "type": "string",
+          "description": "Optional title for the entry",
+          "maxLength": 200
+        },
+        "content": {
+          "type": "string",
+          "description": "Multiline journal content",
+          "maxLength": 10000
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of entry creation"
+        },
+        "status": {
+          "type": "string",
+          "description": "Analysis status: pending, done, or failed",
+          "enum": ["pending", "done", "failed"]
+        },
+        "emotion": {
+          "type": "string",
+          "description": "Primary detected emotion",
+          "enum": ["vui vẻ", "bình yên", "buồn bã", "lo lắng", "tức giận", "thất vọng", "cô đơn", "căng thẳng", "khác", null]
+        },
+        "sentiment_score": {
+          "type": "number",
+          "description": "Sentiment score from -1.0 to 1.0"
+        },
+        "stress_level": {
+          "type": "number",
+          "description": "Stress score from 0 to 100"
+        },
+        "topic": {
+          "type": "string",
+          "description": "Primary topic",
+          "enum": ["học tập", "công việc", "gia đình", "quan hệ", "tài chính", "sức khỏe", "khác", null]
+        },
+        "summary": {
+          "type": "string",
+          "description": "Neutral objective AI summary",
+          "maxLength": 500
+        },
+        "analyzedAt": {
+          "type": "string",
+          "description": "ISO timestamp of analysis completion"
+        },
+        "errorMessage": {
+          "type": "string",
+          "description": "Error details if analysis failed",
+          "maxLength": 500
+        },
+        "fileName": {
+          "type": "string",
+          "description": "Text file name, e.g., tam-su-20261030.txt",
+          "maxLength": 200
+        },
+        "textFileContent": {
+          "type": "string",
+          "description": "Full formatted text file representation of the entry stored in Firebase",
+          "maxLength": 50000
+        },
+        "fileType": {
+          "type": "string",
+          "description": "MIME type of text representation (text/plain)",
+          "maxLength": 50
+        }
+      },
+      "required": ["id", "userId", "content", "createdAt", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile document indexed by user auth ID"
+    },
+    "/users/{userId}/entries/{entryId}": {
+      "schema": "DiaryEntry",
+      "description": "User private journal entries subcollection"
+    }
+  }
+}

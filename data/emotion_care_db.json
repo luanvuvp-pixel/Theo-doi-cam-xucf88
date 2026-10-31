@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "id": "test-user-123",
+      "name": "UserTest",
+      "email": "test@emotioncare.vn",
+      "passwordHash": "",
+      "salt": "",
+      "createdAt": "2026-10-31T02:43:46.684Z"
+    }
+  ],
+  "entries": [],
+  "sessions": []
+}

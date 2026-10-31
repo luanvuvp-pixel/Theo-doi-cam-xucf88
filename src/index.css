@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-base: #181224;
+    --bg-surface: #221A33;
+    --bg-card: #2A203F;
+    --bg-card-hover: #352950;
+    --border-subtle: rgba(183, 148, 244, 0.18);
+    --border-highlight: rgba(242, 153, 74, 0.35);
+    --accent-amber: #F2994A;
+    --accent-gold: #F2C94C;
+    --accent-lavender: #B794F4;
+    --text-primary: #F7FAFC;
+    --text-secondary: #CBD5E1;
+    --text-muted: #94A3B8;
+  }
+
+  body {
+    background-color: #181224;
+    color: #F1F5F9;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #181224;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #3F325E;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #5B4886;
+  }
+}
+
+.font-serif-heading {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Ambient glow utility classes */
+.glow-amber {
+  box-shadow: 0 0 25px -5px rgba(242, 153, 74, 0.25);
+}
+
+.glow-lavender {
+  box-shadow: 0 0 25px -5px rgba(183, 148, 244, 0.2);
+}
+
+.mystic-gradient {
+  background: radial-gradient(circle at 15% 15%, rgba(183, 148, 244, 0.08) 0%, transparent 45%),
+              radial-gradient(circle at 85% 85%, rgba(242, 153, 74, 0.07) 0%, transparent 45%),
+              linear-gradient(180deg, #181224 0%, #1f1630 50%, #181224 100%);
+}

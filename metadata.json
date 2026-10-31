@@ -1,0 +1,6 @@
+{
+  "name": "Emotion Care",
+  "description": "Không gian viết và theo dõi cảm xúc cá nhân với phân tích khách quan từ Gemini AI",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
